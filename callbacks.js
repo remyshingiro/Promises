@@ -29,6 +29,17 @@ legacyAPI.login("username", (error, loginData) => {
             console.error("failed to fetch movie:", error);
         }
         console.log("fetching the movies:",movies );
+        const firstMovie = movies[0];
+        legacyAPI.getShowtimes(firstMovie, (error, showtimes)=>{
+            if(error){
+                console.error("no showtimes found:", error);
+            }
+             console.log(`🕒 Showtimes for "${firstMovie}":`, showtimes);
+
+             const firstShowtime = showtimes[0];
+             
+             legacyAPI.bookTicket()
+        })
     })
 
 })
