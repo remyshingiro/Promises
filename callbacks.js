@@ -37,8 +37,13 @@ legacyAPI.login("username", (error, loginData) => {
              console.log(`🕒 Showtimes for "${firstMovie}":`, showtimes);
 
              const firstShowtime = showtimes[0];
-             
-             legacyAPI.bookTicket()
+
+             legacyAPI.bookTicket(firstShowtime, (error, bookingResult)=>{
+                if(error){
+                    console.error("failed to book:", error);
+                }
+                console.log(`🎉 Success! Booked seat ${bookingResult.seat} at ${firstShowtime}.`);
+             })
         })
     })
 
