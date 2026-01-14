@@ -19,9 +19,16 @@ const legacyAPI = {
 
 legacyAPI.login("username", (error, loginData) => {
     if(error){
-        console.log("Error:", error);
+        console.error("Error:", error);
         return;
     }
     console.log("User logging:", loginData);
+
+    legacyAPI.getMovies(loginData.userId, (error, movies)=> {
+        if(error){
+            console.error("failed to fetch movie:", error);
+        }
+        console.log("fetching the movies:",movies );
+    })
 
 })
