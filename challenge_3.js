@@ -16,6 +16,7 @@ async function createDashboard() {
         ]);
 
         const users = allUsers.map(user => {
+          
       // Count posts written by this user
       const userPosts = allPosts.filter(post => post.userId === user.id);
       const postsWritten = userPosts.length;
