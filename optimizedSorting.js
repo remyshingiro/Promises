@@ -11,3 +11,23 @@
 // [33, 231, 454, 11, 9, 99, 57]  => 104874 = 231 * 454
 
 
+const maxProduct = (a) => {
+    let n1 = Math.max(a[0], a[1]);
+    let n2 = Math.min(a[0], a[1]);
+
+    for(let i = 2; i < a.length; i++) {
+        let current = a[i];
+
+        if(current > n1) {
+            n2 = n1;
+            n1 = current;
+        } else if(current > n2) {
+            n2 = current;
+        }
+    }
+
+    return n1 * n2;
+}
+
+const array = [3,6, 2,8];
+console.log(maxProduct(array))
