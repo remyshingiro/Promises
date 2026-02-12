@@ -43,15 +43,24 @@ async function dashboard() {
             fetch("https://jsonplaceholder.typicode.com/posts?userId=1"),
             fetch("https://jsonplaceholder.typicode.com/comments?postId=1")
         ]);
-        
+
 
         const [users, posts, comments] = await Promise.all([
             userResponse.json(),
             postResponse.json(),
             commentResponse.json()
         ]);
+
+        return {
+            usee: users,
+            postii: posts,
+            comii: comments
+        }
         
     } catch (error) {
         console.error("An error occured")
     }
 };
+
+
+dashboard().then(data => console.log(data))
