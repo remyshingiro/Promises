@@ -17,9 +17,23 @@ const signal = controller.signal;
 setInterval(() => {
     controller.abort();
     console.log("request was aborted")
-}, 5);
+}, 5000);
 
 fetch('https://jsonplaceholder.typicode.com/users', {signal})
     .then(response => response.json())
     .then(data => console.log(data))
     .catch(error => console.log(error))
+
+
+    // const controller = new AbortController();
+    // const signal = controller.signal;
+
+    // setTimeout(() => {
+    //     controller.abort();
+    //     console.log("aborted")
+    // },50)
+
+    // fetch("https://jsonplaceholder.typicode.com/users", {signal})
+    //   .then(response => response.json())
+    //   .then(data => console.log(data))
+    //   .catch(error => console.log(error))
