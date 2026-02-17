@@ -14,10 +14,10 @@
 const controller = new AbortController();
 const signal = controller.signal;
 
-setInterval(() => {
+setTimeout(() => {
     controller.abort();
     console.log("request was aborted")
-}, 5000);
+}, 50);
 
 fetch('https://jsonplaceholder.typicode.com/users', {signal})
     .then(response => response.json())

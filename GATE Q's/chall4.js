@@ -11,3 +11,28 @@
 // .then(data => console.log(data))
 // .catch(error => console.log('Error:', error))
 // ```
+
+const myFetch = (url) => {
+    return new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", url);
+
+        xhr.responseType = "json";
+
+        xhr.onload = () => {
+            if(xhr.status >=200 && xhr.status < 300) {
+                resolve(xhr.response);
+            } else {
+                reject( new Error(xhr.statusText))
+            }
+        }
+
+        xhr.onerror = () => reject(new Error("network error occured")) 
+
+        xhr.send()
+    })
+}
+
+myFetch("https://jsonplaceholder.typicode.com/users")
+  .then(data => console.log(data))
+  .catch(error => console.log("Error:", error));
